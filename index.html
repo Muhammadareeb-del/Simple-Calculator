@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <style>
+        body { font-family: Arial; background: #eef6ff; text-align: center; margin: 0; }
+        h1 { background: #0066cc; color: white; padding: 20px; margin: 0; }
+        .box { background: white; width: 350px; margin: 20px auto; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+        input, select { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { background: #0066cc; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        table { width: 80%; margin: 20px auto; background: white; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 10px; }
+        th { background: #0066cc; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>Hospital Management System</h1>
+    <p>Welcome to our Hospital Management System</p>
+
+    <div class="box">
+        <h2>Patient Registration</h2>
+        <input type="text" id="name" placeholder="Patient Name">
+        <input type="number" id="age" placeholder="Age">
+        <select id="disease">
+            <option>Fever</option>
+            <option>Heart Problem</option>
+            <option>Child Problem</option>
+            <option>General Checkup</option>
+        </select>
+        <button onclick="addPatient()">Add Patient</button>
+    </div>
+
+    <h2>Patients List</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Disease</th>
+        </tr>
+        <tbody id="patientList">
+            <tr><td>Ahmed</td><td>25</td><td>Fever</td></tr>
+            <tr><td>Ayesha</td><td>30</td><td>General Checkup</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        function addPatient() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let disease = document.getElementById("disease").value;
+
+            if(name == "" || age == "") {
+                alert("Please fill Name and Age");
+                return;
+            }
+
+            let table = document.getElementById("patientList");
+            let row = table.insertRow();
+            row.insertCell(0).innerText = name;
+            row.insertCell(1).innerText = age;
+            row.insertCell(2).innerText = disease;
+
+            document.getElementById("name").value = "";
+            document.getElementById("age").value = "";
+            alert("Patient Added Successfully!");
+        }
+    </script>
+
+</body>
+</html>
